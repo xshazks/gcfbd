@@ -1,12 +1,12 @@
 package gcfbd
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
-func GCHandlerFunc(Mongostring, dbname, colname string) []byte {
-	koneksyen := GetConnectionMongo(Mongostring, dbname)
-	datageo := GetAllGeoData(koneksyen, colname)
-
-	jsonsaw, _ := json.Marshal(datageo)
-
-	return jsonsaw
+func GCFHandler(MONGOCONNSTRINGENV, dbname, collectionname string) string {
+	mconn := SetConnection(MONGOCONNSTRINGENV, dbname)
+	datagedung := GetAllGeoData(mconn, collectionname)
+	jsondatagedung, _ := json.Marshal(datagedung)
+	return string(jsondatagedung)
 }

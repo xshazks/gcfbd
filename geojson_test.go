@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestGCHandlerFunc(t *testing.T) {
-	data := GCHandlerFunc("string", "gisaw", "petasaw")
-
-	fmt.Printf("%+v", data)
+func TestUpdateGetData(t *testing.T) {
+	mconn := SetConnection("MONGOSTRING", "gisaw")
+	datasaw := GetAllGeoData(mconn, "petasaw")
+	fmt.Println(datasaw)
 }

@@ -1,18 +1,18 @@
 package gcfbd
 
 import (
+	"os"
+
 	"github.com/aiteung/atdb"
 	"go.mongodb.org/mongo-driver/mongo"
-	"os"
 )
 
-func GetConnectionMongo(MongoString, dbname string) *mongo.Database {
-	MongoInfo := atdb.DBInfo{
-		DBString: os.Getenv(MongoString),
+func SetConnection(MONGOCONNSTRINGENV, dbname string) *mongo.Database {
+	var DBmongoinfo = atdb.DBInfo{
+		DBString: os.Getenv(MONGOCONNSTRINGENV),
 		DBName:   dbname,
 	}
-	conn := atdb.MongoConnect(MongoInfo)
-	return conn
+	return atdb.MongoConnect(DBmongoinfo)
 }
 
 func GetAllGeoData(MongoConnect *mongo.Database, colname string) []GeoJson {
