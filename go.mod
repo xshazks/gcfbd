@@ -1,4 +1,4 @@
-module github.com/xshazks/gcfbdgo
+module github.com/xshazks/gcfbd
 
 go 1.20
 
